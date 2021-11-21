@@ -7,10 +7,11 @@ public class ScoreUI : MonoBehaviour
 {
     public RowUI rowui;
     public ScoreManager scoreManager;
+    public float scoreDisplay;
 
     void Start()
     {
-        scoreManager.AddScore(new Score("SUB", 999));
+        scoreManager.AddScore(new Score("SUB", scoreDisplay));
 
         var scores = scoreManager.GetHighScores().ToArray();
         for (int i = 0; i < scores.Length; i++)
@@ -21,5 +22,8 @@ public class ScoreUI : MonoBehaviour
             row.score.text = scores[i].score.ToString();
         }
     }
-
+	void Update()
+	{
+        Debug.Log(scoreDisplay); 
+	}
 }
